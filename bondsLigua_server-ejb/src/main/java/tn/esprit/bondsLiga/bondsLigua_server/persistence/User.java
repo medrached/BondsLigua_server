@@ -1,24 +1,35 @@
-package tn.esprit.bondsLiga.entities;
+package tn.esprit.bondsLiga.bondsLigua_server.persistence;
 
 import java.io.Serializable;
 import java.sql.Date;
 
+import javax.enterprise.context.Destroyed;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="role")
 public class User implements Serializable {
 	
-	private String user_id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int user_id;
+	
 	private String first_name;
 	private String last_name;
 	private Date inscription_date;
 	
 	
-	
-	
-	
-	
-	public String getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
-	public void setUser_id(String user_id) {
+	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 	

@@ -6,10 +6,10 @@ import java.lang.String;
 import javax.persistence.*;
 
 @Entity
-@Table(name="t_todo")
 public class Todo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
 	
 	private Integer id;
 	private String text;

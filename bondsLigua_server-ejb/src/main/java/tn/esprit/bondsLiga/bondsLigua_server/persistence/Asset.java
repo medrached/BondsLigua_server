@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -51,6 +52,16 @@ public class Asset implements Serializable {
 		FirstUseDate = firstUseDate;
 	}
 	
+@ManyToOne
+private Trader trader;
+public Trader getTrader() {
+	return trader;
+}
+public void setTrader(Trader trader) {
+	this.trader = trader;
+}
+
+
 	
 	
 

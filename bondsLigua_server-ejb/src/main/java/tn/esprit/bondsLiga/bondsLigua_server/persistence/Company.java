@@ -1,11 +1,14 @@
 package tn.esprit.bondsLiga.bondsLigua_server.persistence;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Company implements Serializable{
@@ -39,5 +42,18 @@ public class Company implements Serializable{
 	public void setTokenSharesNUmber(int tokenSharesNUmber) {
 		this.tokenSharesNUmber = tokenSharesNUmber;
 	}
+	
+	@OneToMany(mappedBy="company")
+	private  List<Share> shares;
+	
+	public List<Share> getShares() {
+		return shares;
+	}
+	public void setShares(List<Share> shares) {
+		this.shares = shares;
+	}
+	
+	
+	
 	
 }

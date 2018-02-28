@@ -2,11 +2,13 @@ package tn.esprit.bondsLiga.bondsLigua_server.persistence;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -36,6 +38,18 @@ public class Portfolio implements Serializable {
 	public void setStartingDate(Date startingDate) {
 		this.startingDate = startingDate;
 	}
+	
+	@OneToMany(mappedBy="portfolio")
+	private List<Transaction> transactions;
+	
+	public List<Transaction> getTransactions() {
+		return transactions;
+	}
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
+	}
+	
+	
 	
 	
 	

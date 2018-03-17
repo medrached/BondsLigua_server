@@ -7,11 +7,14 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 @Entity
-@DiscriminatorValue(value="trader")
 public class Trader extends User implements Serializable {
 
+private int cin;
 private int scoring;
+private Portfolio portfolio;
 
+@OneToMany(mappedBy="trader")
+private List<Asset> assets;
 public int getScoring() {
 	return scoring;
 }
@@ -21,12 +24,27 @@ public void setScoring(int scoring) {
 }
 
 
-@OneToMany(mappedBy="trader")
-private List<Asset> assets;
+
+
+
+public int getCin() {
+	return cin;
+}
+
+public void setCin(int cin) {
+	this.cin = cin;
+}
+
+
+
+
+
+
 
 public List<Asset> getAssets() {
 	return assets;
 }
+
 
 public void setAssets(List<Asset> assets) {
 	this.assets = assets;

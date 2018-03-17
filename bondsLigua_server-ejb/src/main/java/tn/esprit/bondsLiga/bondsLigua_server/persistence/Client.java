@@ -6,11 +6,12 @@ import java.sql.Date;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 @Entity
-@DiscriminatorValue(value="client")
 public class Client extends User implements Serializable {
 
 	private int current_money_account;
 	private int card_number;
+	
+	
 	public int getCurrent_money_account() {
 		return current_money_account;
 	}

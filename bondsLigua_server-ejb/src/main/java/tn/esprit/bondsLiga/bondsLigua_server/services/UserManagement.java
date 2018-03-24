@@ -1,17 +1,10 @@
 package tn.esprit.bondsLiga.bondsLigua_server.services;
-
 import java.util.ArrayList;
-
 import java.util.List;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.enterprise.inject.Alternative;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 import tn.esprit.bondsLiga.bondsLigua_server.persistence.Administrator;
 import tn.esprit.bondsLiga.bondsLigua_server.persistence.Client;
@@ -36,6 +29,7 @@ public class UserManagement implements IUserManagementRemote {
 	@Override
 	public List<Administrator> findAll() {
 		
+	
 		String select = "select ua From Administrator ua";
 		Query query = em.createQuery(select);
 		return query.getResultList();
@@ -44,11 +38,6 @@ public class UserManagement implements IUserManagementRemote {
 		
 		
 		
-		/*
-	TypedQuery<Administrator> query = em.createQuery("SELECT ad  FROM ad", Administrator.class);
-		return query.getResultList();
-		
-		*/
 	}
 
 	@Override
@@ -140,7 +129,7 @@ public class UserManagement implements IUserManagementRemote {
 		query.setParameter("userName", login);
 		query.setParameter("password", pwd);
 		List<User> lu=query.getResultList();
-		if(lu.size()!=0)
+		if(!lu.isEmpty())
 	{
 		b=true;
 		}
@@ -180,8 +169,8 @@ public class UserManagement implements IUserManagementRemote {
 	@Override
 	public void validateAdmin(Integer id) {
 		Administrator adminfound=em.find(Administrator.class,id);
-		if(adminfound.getValidation_level()<2){
-			adminfound.setValidation_level(adminfound.getValidation_level()+1);
+		if(adminfound.getValidationLevel()<2){
+			adminfound.setValidationLevel(adminfound.getValidationLevel()+1);
 
 		}
 		
@@ -207,8 +196,8 @@ public class UserManagement implements IUserManagementRemote {
 		
 		
 		Administrator adminfound=em.find(Administrator.class,id);
-		if(adminfound.getValidation_level()!=0 ){
-			adminfound.setValidation_level(0);
+		if(adminfound.getValidationLevel()!=0 ){
+			adminfound.setValidationLevel(0);
 
 		}
 		

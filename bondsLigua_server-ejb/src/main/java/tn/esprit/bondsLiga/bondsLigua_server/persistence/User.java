@@ -1,10 +1,8 @@
 package tn.esprit.bondsLiga.bondsLigua_server.persistence;
 
 import java.io.Serializable;
-import java.sql.Date;
 
-import javax.enterprise.context.Destroyed;
-import javax.persistence.DiscriminatorColumn;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,17 +20,17 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int user_id;
+	private int userId;
 	
 	private String username;
 	private String pwd;
-	private String first_name;
-	private String last_name;
+	private String firstName;
+	private String lastName;
 	private String nationality;
 	@Temporal(TemporalType.DATE)
 	private java.util.Date birthDate;
 	@Temporal(TemporalType.DATE)
-	private java.util.Date inscription_date;
+	private java.util.Date inscriptionDate;
 	private String email;
 	
 	
@@ -43,7 +41,7 @@ public class User implements Serializable {
 	public String getUsername() {
 		return username;
 	}
-	public void setUsername(String username) {
+	public void setUserName(String username) {
 		this.username = username;
 	}
 	public String getPwd() {
@@ -73,47 +71,49 @@ public class User implements Serializable {
 	public void setBirthDate(java.util.Date birthDate) {
 		this.birthDate = birthDate;
 	}
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
-	}
-	
-	
-	
-	public String getFirst_name() {
-		return first_name;
-	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 	
 	
 	
-	
-	public String getLast_name() {
-		return last_name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	
 	
 	
 	
-	public java.util.Date getInscription_date() {
-		return inscription_date;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setInscription_date(java.util.Date inscription_date) {
-		this.inscription_date = inscription_date;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
+	
+	
+	
+	public java.util.Date getInscriptionDate() {
+		return inscriptionDate;
+	}
+	public void setInscriptionDate(java.util.Date inscriptionDate) {
+		this.inscriptionDate = inscriptionDate;
 	}
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", username=" + username + ", pwd=" + pwd + ", first_name=" + first_name
-				+ ", last_name=" + last_name + ", nationality=" + nationality + ", birthDate=" + birthDate
-				+ ", inscription_date=" + inscription_date + ", email=" + email + "]";
+		return "User [userId=" + userId + ", username=" + username + ", pwd=" + pwd + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", nationality=" + nationality + ", birthDate=" + birthDate
+				+ ", inscriptionDate=" + inscriptionDate + ", email=" + email + "]";
 	}
+
+	
 	
 	
 	

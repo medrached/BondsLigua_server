@@ -120,11 +120,11 @@ public class UserManagement implements IUserManagementRemote {
 	}
 
 	@Override
-	public boolean userExists(String login, String pwd) {
+	public boolean adminExists(String login, String pwd) {
 		
 		
 		boolean b=false;
-		String select = "SELECT u FROM User u WHERE u.username=:userName and u.pwd=:password";
+		String select = "SELECT ad FROM Administrator ad WHERE ad.username=:userName and ad.pwd=:password";
 		Query query = em.createQuery(select);
 		query.setParameter("userName", login);
 		query.setParameter("password", pwd);
@@ -138,6 +138,42 @@ public class UserManagement implements IUserManagementRemote {
 	}
 
 
+	@Override
+	public boolean traderExists(String login, String pwdd) {
+		
+		
+		boolean b=false;
+		String select = "SELECT t FROM Trader t WHERE t.username=:userName and t.pwd=:password";
+		Query query = em.createQuery(select);
+		query.setParameter("userName", login);
+		query.setParameter("password", pwdd);
+		List<User> lu=query.getResultList();
+		if(!lu.isEmpty())
+	{
+		b=true;
+		}
+		return b;
+		
+	}
+	
+	
+	@Override
+	public boolean clientExists(String login, String pwd) {
+		
+		
+		boolean b=false;
+		String select = "SELECT c FROM Client c WHERE c.username=:userName and c.pwd=:password";
+		Query query = em.createQuery(select);
+		query.setParameter("userName", login);
+		query.setParameter("password", pwd);
+		List<User> lu=query.getResultList();
+		if(!lu.isEmpty())
+	{
+		b=true;
+		}
+		return b;
+		
+	}
 
 	@Override
 	public void upgradePrivilege(Integer id) {
@@ -228,6 +264,35 @@ public class UserManagement implements IUserManagementRemote {
 		return query.getResultList();
 
 		
+	}
+
+
+
+	@Override
+	public Administrator returnAdminConnected(String login,String pwd) {
+		String select = "SELECT ad FROM Administrator ad WHERE ad.username=:userName and ad.pwd=:password";
+		Query query = em.createQuery(select);
+		query.setParameter("userName", login);
+		query.setParameter("password", pwd);
+		Administrator ad=(Administrator)query.getSingleResult();
+		
+		return ad;
+	}
+
+
+
+	@Override
+	public Trader returnTraderConnected(String login,String pwd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public javax.ws.rs.client.Client returnClientConnected(String login,String pwd) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

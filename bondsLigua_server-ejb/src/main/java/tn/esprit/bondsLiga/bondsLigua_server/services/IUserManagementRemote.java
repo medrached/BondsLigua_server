@@ -38,8 +38,15 @@ public interface IUserManagementRemote {
 	public void updateClient(Integer id);
 	public Trader findClientById(Integer id);
 	
+	public Administrator returnAdminConnected(String login,String pwd);
+	public  Trader returnTraderConnected(String login,String pwd);
+	public  Client returnClientConnected(String login,String pwd);
 
-	public boolean userExists(String login,String pwd);
+
+	public boolean adminExists(String login,String pwd);
+	public boolean traderExists(String login,String pwd);
+	public boolean clientExists(String login ,String pwd);
+	
 
 	
 	

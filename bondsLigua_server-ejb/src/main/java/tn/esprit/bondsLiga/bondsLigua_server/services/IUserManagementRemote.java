@@ -14,7 +14,7 @@ public interface IUserManagementRemote {
 	
 	
 	public void createAdmin(Administrator admin);
-	public java.util.List<Administrator> findAll();
+	public java.util.List<Administrator> findAll( int userid);
 	public java.util.List<Administrator> searchAdmins(String s);
 	public void deleteAdmin(Integer id);
 	public void upgradePrivilege(Integer id);

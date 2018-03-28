@@ -27,11 +27,12 @@ public class UserManagement implements IUserManagementRemote {
 	
 	
 	@Override
-	public List<Administrator> findAll() {
+	public List<Administrator> findAll(int userid) {
 		
 	
-		String select = "select ua From Administrator ua";
+		String select = "select ua From Administrator ua where NOT ua.userId=:userid";
 		Query query = em.createQuery(select);
+		query.setParameter("userid",userid );
 		return query.getResultList();
 		
 		
@@ -274,16 +275,16 @@ public class UserManagement implements IUserManagementRemote {
 		Query query = em.createQuery(select);
 		query.setParameter("userName", login);
 		query.setParameter("password", pwd);
-		Administrator ad=(Administrator)query.getSingleResult();
+		return (Administrator)query.getSingleResult();
 		
-		return ad;
-	}
+		
+	}	
 
 
 
 	@Override
 	public Trader returnTraderConnected(String login,String pwd) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 

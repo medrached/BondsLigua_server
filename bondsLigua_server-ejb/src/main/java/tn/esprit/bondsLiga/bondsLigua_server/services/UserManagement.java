@@ -256,15 +256,20 @@ public class UserManagement implements IUserManagementRemote {
 
 
 	@Override
-	public List<Administrator> searchAdmins(String s) {
-
-		String select = "SELECT u FROM User u WHERE u.username=:userName or u.pwd=:password";
-		Query query = em.createQuery(select);
-		query.setParameter("userName", s);
-		query.setParameter("password", s);
-		return query.getResultList();
-
+	public List<Administrator> searchAdmins(String s, int myId) {
 		
+
+		String select = "SELECT ad FROM Administrator ad WHERE ( ad.username like :userName or ad.firstName like :firstName or ad.lastName like :lastName or ad.nationality like :nationality  ) AND  ad.userId<>:myId ";
+		Query query = em.createQuery(select);
+		query.setParameter("userName","%"+ s+"%");
+		query.setParameter("firstName", "%"+ s+"%");
+		query.setParameter("lastName", "%"+ s+"%");
+		query.setParameter("nationality", "%"+ s+"%");
+	//	query.setParameter("birthDate", "%"+ s+"%");
+		query.setParameter("myId",myId);
+		
+		
+		return query.getResultList();
 	}
 
 

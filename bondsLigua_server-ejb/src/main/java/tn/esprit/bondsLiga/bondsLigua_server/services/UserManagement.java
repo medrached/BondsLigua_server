@@ -92,7 +92,8 @@ public class UserManagement implements IUserManagementRemote {
 
 	@Override
 	public void createClient(Client client) {
-		// TODO Auto-generated method stub
+		em.persist(client);
+		em.refresh(client);	
 		
 	}
 
@@ -179,15 +180,15 @@ public class UserManagement implements IUserManagementRemote {
 	@Override
 	public void upgradePrivilege(Integer id) {
 		Administrator adminfound=em.find(Administrator.class,id);
-		if(adminfound.getPrivileges().equals("admin")){
-			adminfound.setPrivileges("super admin");
+		if(adminfound.getPrivileges().equals("Administrator")){
+			adminfound.setPrivileges("Super admin");
 
 		}
-		else if(adminfound.getPrivileges().equals("super admin"))
+		else if(adminfound.getPrivileges().equals("Super admin"))
 		{
-			adminfound.setPrivileges("supervisor");
+			adminfound.setPrivileges("Supervisor");
 		}
-		else if(adminfound.getPrivileges().equals("supervisor"))
+		else if(adminfound.getPrivileges().equals("Supervisor"))
 		{		/*
 	        Alert alert = new Alert(AlertType.WARNING);
 	        alert.setTitle("Upgrade not allawed");
@@ -289,16 +290,34 @@ public class UserManagement implements IUserManagementRemote {
 
 	@Override
 	public Trader returnTraderConnected(String login,String pwd) {
-		
-		return null;
+		String select = "SELECT t FROM Trader t WHERE t.username=:userName and t.pwd=:password";
+		Query query = em.createQuery(select);
+		query.setParameter("userName", login);
+		query.setParameter("password", pwd);
+		return (Trader)query.getSingleResult();
 	}
 
 
 
 	@Override
-	public javax.ws.rs.client.Client returnClientConnected(String login,String pwd) {
-		// TODO Auto-generated method stub
-		return null;
+	public Client returnClientConnected(String login,String pwd) {
+		String select = "SELECT c FROM Client c WHERE c.username=:userName and c.pwd=:password";
+		Query query = em.createQuery(select);
+		query.setParameter("userName", login);
+		query.setParameter("password", pwd);
+		return (Client)query.getSingleResult();
+		
+		
+	}
+
+
+
+	@Override
+	public int generateBankingCode() {
+		tn.esprit.bondsLiga.bondsLigua_server.util.CreditCardNumberGenerator cd=new tn.esprit.bondsLiga.bondsLigua_server.util.CreditCardNumberGenerator();
+		return	Integer.parseInt(cd.generate("456", 5));
+	
+		
 	}
 
 

@@ -37,10 +37,11 @@ public interface IUserManagementRemote {
 	public void deleteClient(Integer id);
 	public void updateClient(Integer id);
 	public Trader findClientById(Integer id);
+	public int generateBankingCode();
 	
 	public Administrator returnAdminConnected(String login,String pwd);
 	public  Trader returnTraderConnected(String login,String pwd);
-	public  Client returnClientConnected(String login,String pwd);
+	public  tn.esprit.bondsLiga.bondsLigua_server.persistence.Client returnClientConnected(String login,String pwd);
 
 
 	public boolean adminExists(String login,String pwd);

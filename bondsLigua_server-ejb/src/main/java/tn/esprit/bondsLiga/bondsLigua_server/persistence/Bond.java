@@ -32,15 +32,17 @@ public class Bond implements Serializable {
 	private double amount;
 	private double price;
 	private int paymentPeriod;
+	private boolean confirmation;
+	private int idInvester;
 	@ManyToOne
-	private Trader trader;
+	private User user;
 	
 	public Bond() {
 		super();
 	}
 
 	public Bond(int reference, int idIssuer, String startingDate, String maturityDate, double amount, double price,
-			int paymentPeriod, Trader trader) {
+			int paymentPeriod, boolean confirmation, int idInvester, User user) {
 		super();
 		this.reference = reference;
 		this.idIssuer = idIssuer;
@@ -49,11 +51,13 @@ public class Bond implements Serializable {
 		this.amount = amount;
 		this.price = price;
 		this.paymentPeriod = paymentPeriod;
-		this.trader = trader;
+		this.confirmation = confirmation;
+		this.idInvester = idInvester;
+		this.user = user;
 	}
 
 	public Bond(int idIssuer, String startingDate, String maturityDate, double amount, double price, int paymentPeriod,
-			Trader trader) {
+			boolean confirmation, int idInvester, User user) {
 		super();
 		this.idIssuer = idIssuer;
 		this.startingDate = startingDate;
@@ -61,21 +65,9 @@ public class Bond implements Serializable {
 		this.amount = amount;
 		this.price = price;
 		this.paymentPeriod = paymentPeriod;
-		this.trader = trader;
-	}
-	
-	
-
-	public Bond(int reference, int idIssuer, String startingDate, String maturityDate, double amount, double price,
-			int paymentPeriod) {
-		super();
-		this.reference = reference;
-		this.idIssuer = idIssuer;
-		this.startingDate = startingDate;
-		this.maturityDate = maturityDate;
-		this.amount = amount;
-		this.price = price;
-		this.paymentPeriod = paymentPeriod;
+		this.confirmation = confirmation;
+		this.idInvester = idInvester;
+		this.user = user;
 	}
 
 	public int getReference() {
@@ -134,13 +126,34 @@ public class Bond implements Serializable {
 		this.paymentPeriod = paymentPeriod;
 	}
 
-	public Trader getTrader() {
-		return trader;
+	public boolean isConfirmation() {
+		return confirmation;
 	}
 
-	public void setTrader(Trader trader) {
-		this.trader = trader;
+	public void setConfirmation(boolean confirmation) {
+		this.confirmation = confirmation;
 	}
+
+	public int getIdInvester() {
+		return idInvester;
+	}
+
+	public void setIdInvester(int idInvester) {
+		this.idInvester = idInvester;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
+	
+
+
 	
 	
 	

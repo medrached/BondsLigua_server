@@ -14,8 +14,7 @@ private int cin;
 private int scoring;
 private Portfolio portfolio;
 
-@OneToMany(mappedBy="trader")
-private List<Asset> assets;
+
 public int getScoring() {
 	return scoring;
 }
@@ -41,15 +40,6 @@ public void setCin(int cin) {
 
 
 
-
-public List<Asset> getAssets() {
-	return assets;
-}
-
-
-public void setAssets(List<Asset> assets) {
-	this.assets = assets;
-}
 
 
 

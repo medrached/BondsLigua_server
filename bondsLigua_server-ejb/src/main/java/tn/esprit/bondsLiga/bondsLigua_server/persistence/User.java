@@ -1,7 +1,7 @@
 package tn.esprit.bondsLiga.bondsLigua_server.persistence;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,18 +33,8 @@ public class User implements Serializable {
 	private java.util.Date inscriptionDate;
 	private String email;
 	
-	/*private List <Bond> bonds;
 	
-	@OneToMany(mappedBy="user")
-	private List<Bond> getBonds()
-	{
-		return bonds;
-	}
 	
-	private void setBonds(List<Bond> bonds)
-	{
-		this.bonds=bonds;
-	}*/
 	
 	
 	
@@ -123,15 +112,17 @@ public class User implements Serializable {
 				+ ", lastName=" + lastName + ", nationality=" + nationality + ", birthDate=" + birthDate
 				+ ", inscriptionDate=" + inscriptionDate + ", email=" + email + "]";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-	
-	
-	
-	
-	
-	
 
-	
 
 	
 

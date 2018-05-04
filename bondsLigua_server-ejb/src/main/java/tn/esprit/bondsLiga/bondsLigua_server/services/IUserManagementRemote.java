@@ -1,13 +1,16 @@
 package tn.esprit.bondsLiga.bondsLigua_server.services;
 
-import java.awt.List;
 
+import java.util.Map;
+import java.util.*;
 import javax.ejb.Remote;
-import javax.ws.rs.client.Client;
-
 import tn.esprit.bondsLiga.bondsLigua_server.persistence.Administrator;
+import tn.esprit.bondsLiga.bondsLigua_server.persistence.Client;
 import tn.esprit.bondsLiga.bondsLigua_server.persistence.Trader;
 import tn.esprit.bondsLiga.bondsLigua_server.persistence.User;
+
+
+
 
 @Remote
 public interface IUserManagementRemote {
@@ -22,6 +25,7 @@ public interface IUserManagementRemote {
 	public void banAcountAdmin(Integer id);
 	public void updateAdmin(Administrator admin);
 	public Administrator findAdminById(Integer id);
+	public int addAmount(int lastAmount,int amountToAdd);
 
 	
 	
@@ -35,9 +39,11 @@ public interface IUserManagementRemote {
 	public void createClient(tn.esprit.bondsLiga.bondsLigua_server.persistence.Client client);
 	public java.util.List<tn.esprit.bondsLiga.bondsLigua_server.persistence.Client> findAllClients();
 	public void deleteClient(Integer id);
-	public void updateClient(Integer id);
+	public void updateClient(Client c);
 	public Trader findClientById(Integer id);
 	public int generateBankingCode();
+	
+	public Map<String,Float> getDocumentXMLfromURL(String url);
 	
 	public Administrator returnAdminConnected(String login,String pwd);
 	public  Trader returnTraderConnected(String login,String pwd);
@@ -47,18 +53,24 @@ public interface IUserManagementRemote {
 	public boolean adminExists(String login,String pwd);
 	public boolean traderExists(String login,String pwd);
 	public boolean clientExists(String login ,String pwd);
-	
 
 	
+
+	public java.util.List<Float> statisticsOfTheCurrency(String s);
+	public Map<String,Float> actualCurrencies();
+	public double investMOney(double startingMoney,List<Integer> money,List<Double> rate);
+	public double myNewMoneyAccount(List<Double> rates,List<Integer>amounts); 
+	public Map<String,Float> clientStatsMoneyInvested();
+	public Map<String,Float> clientStatsCurrentMoney();
+	public Map<String,Integer> adminStatsRole();
 	
 	
+	
+	
+
+
+
 }
-
-
-
-
-
-
 
 
 

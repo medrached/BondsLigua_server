@@ -27,15 +27,15 @@ public class BondZeroCoupon extends Bond implements Serializable {
 
 
 
-	public BondZeroCoupon(int reference, int idIssuer, String startingDate, String maturityDate, double amount,
-			double price, int paymentPeriod,boolean confirmation,int idInvester, User user,double interestRate) {
-		super(reference, idIssuer, startingDate, maturityDate, amount, price, paymentPeriod,confirmation,idInvester, user);
+	public BondZeroCoupon(int reference, int idIssuer,String issuer, String startingDate, String maturityDate, double amount,
+			double price, int paymentPeriod,String confirmation,String invester,int idInvester, User user,int link,double interestRate) {
+		super(reference, idIssuer,issuer, startingDate, maturityDate, amount, price, paymentPeriod,confirmation,invester,idInvester, user,link);
 		this.interestRate = interestRate;
 	}
 
-	public BondZeroCoupon(int idIssuer, String startingDate, String maturityDate, double amount, double price,
-			int paymentPeriod,boolean confirmation,int idInvester, User user,double interestRate) {
-		super(idIssuer, startingDate, maturityDate, amount, price, paymentPeriod,confirmation,idInvester, user);
+	public BondZeroCoupon(int idIssuer,String issuer, String startingDate, String maturityDate, double amount, double price,
+			int paymentPeriod,String confirmation,String invester,int idInvester, User user,int link,double interestRate) {
+		super(idIssuer,issuer, startingDate, maturityDate, amount, price, paymentPeriod,confirmation,invester,idInvester, user,link);
 		this.interestRate = interestRate;
 	}
 

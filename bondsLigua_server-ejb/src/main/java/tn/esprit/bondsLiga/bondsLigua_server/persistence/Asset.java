@@ -8,17 +8,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 public class Asset implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int reference;
 	private String type;
 	private float value;
 	private float amortization;
+	@ManyToOne
+	private Client client;
 	@Temporal(TemporalType.DATE)
 	private Date FirstUseDate;
 	public int getReference() {
@@ -52,14 +55,15 @@ public class Asset implements Serializable {
 		FirstUseDate = firstUseDate;
 	}
 	
-@ManyToOne
-private Trader trader;
-public Trader getTrader() {
-	return trader;
+
+public Client getClient() {
+	return client;
 }
-public void setTrader(Trader trader) {
-	this.trader = trader;
+public void setClient(Client client) {
+	this.client = client;
 }
+
+
 
 
 	

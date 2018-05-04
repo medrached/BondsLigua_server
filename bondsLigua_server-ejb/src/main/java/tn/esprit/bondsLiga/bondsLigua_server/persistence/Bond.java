@@ -26,48 +26,56 @@ public class Bond implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int reference;
 	private int idIssuer;
-	
+	protected String issuer;
 	private String startingDate;
 	private String maturityDate;
 	private double amount;
 	private double price;
 	private int paymentPeriod;
-	private boolean confirmation;
+	private String confirmation;
+	private String invester;
 	private int idInvester;
 	@ManyToOne
 	private User user;
+	private int link;
 	
 	public Bond() {
 		super();
 	}
 
-	public Bond(int reference, int idIssuer, String startingDate, String maturityDate, double amount, double price,
-			int paymentPeriod, boolean confirmation, int idInvester, User user) {
+	public Bond(int reference, int idIssuer,String issuer, String startingDate, String maturityDate, double amount, double price,
+			int paymentPeriod, String confirmation, String invester,int idInvester, User user,int link) {
 		super();
 		this.reference = reference;
 		this.idIssuer = idIssuer;
+		this.issuer = issuer;
 		this.startingDate = startingDate;
 		this.maturityDate = maturityDate;
 		this.amount = amount;
 		this.price = price;
 		this.paymentPeriod = paymentPeriod;
 		this.confirmation = confirmation;
-		this.idInvester = idInvester;
+		this.invester = invester;
+		this.idInvester=idInvester;
 		this.user = user;
+		this.link=link;
 	}
 
-	public Bond(int idIssuer, String startingDate, String maturityDate, double amount, double price, int paymentPeriod,
-			boolean confirmation, int idInvester, User user) {
+	public Bond(int idIssuer,String issuer, String startingDate, String maturityDate, double amount, double price, int paymentPeriod,
+			String confirmation, String invester,int idInvester, User user,int link) {
 		super();
 		this.idIssuer = idIssuer;
+		this.issuer = issuer;
 		this.startingDate = startingDate;
 		this.maturityDate = maturityDate;
 		this.amount = amount;
 		this.price = price;
 		this.paymentPeriod = paymentPeriod;
 		this.confirmation = confirmation;
-		this.idInvester = idInvester;
+		this.invester = invester;
+		this.idInvester=idInvester;
 		this.user = user;
+		this.link=link;
 	}
 
 	public int getReference() {
@@ -126,20 +134,20 @@ public class Bond implements Serializable {
 		this.paymentPeriod = paymentPeriod;
 	}
 
-	public boolean isConfirmation() {
+	public String getConfirmation() {
 		return confirmation;
 	}
 
-	public void setConfirmation(boolean confirmation) {
+	public void setConfirmation(String confirmation) {
 		this.confirmation = confirmation;
 	}
 
-	public int getIdInvester() {
-		return idInvester;
+	public String getInvester() {
+		return invester;
 	}
 
-	public void setIdInvester(int idInvester) {
-		this.idInvester = idInvester;
+	public void setInvester(String invester) {
+		this.invester = invester;
 	}
 
 	public User getUser() {
@@ -150,7 +158,32 @@ public class Bond implements Serializable {
 		this.user = user;
 	}
 
+	public int getIdInvester() {
+		return idInvester;
+	}
 
+	public void setIdInvester(int idInvester) {
+		this.idInvester = idInvester;
+	}
+
+	public String getIssuer() {
+		return issuer;
+	}
+
+	public void setIssuer(String issuer) {
+		this.issuer = issuer;
+	}
+
+	public int getLink() {
+		return link;
+	}
+
+	public void setLink(int link) {
+		this.link = link;
+	}
+
+
+	
 	
 
 

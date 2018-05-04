@@ -11,5 +11,9 @@ public interface BondEJBRemote {
 	public void addBond(Bond bond);
 	public void updateBond(Bond bond);
 	public void deleteBond(int a);
-	public List<Bond> displayAll();
+	public List<Bond> displayAll(int idIssuer);
+	public List<Bond> displayOffers(int idInvester);
+	public List<Bond> displayNegotiated(int idIssuer);
+	public List<Bond> displayConfirmed(int idIssuer);
+	
 }
